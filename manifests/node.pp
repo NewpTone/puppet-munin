@@ -38,7 +38,7 @@ class munin::node (
             cwd         => '/tmp/openstack-munin',
             command     => 'git pull origin master && cp * /usr/share/munin/plugins',
             require     => Exec['download_openstack_plugins'],
-            fresh       => true,
+           # fresh       => true,
          }
 
     if $nova-plugin == true {
