@@ -15,7 +15,7 @@ class munin::node (
         require => Package['munin-node']
         }
     service {'munin-node':
-        ensure  => present,
+        ensure  => true,
         subscribe => File['/etc/munin/munin-node.conf'],
         }
     Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
@@ -38,7 +38,7 @@ class munin::node (
             cwd         => '/tmp/openstack-munin',
             command     => 'git pull origin master && cp * /usr/share/munin/plugins',
             require     => Exec['download_openstack_plugins'],
-           # fresh       => true,
+            refresh       => true,
          }
 
     if $nova-plugin == true {
