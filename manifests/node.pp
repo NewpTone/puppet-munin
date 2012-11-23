@@ -1,5 +1,5 @@
 class munin::node (
-    $libvirt_plugin      = true,
+    $libvirt-plugin      = true,
     $nova-plugin         = false,
     $glance-plugin       = false,
     $keystone-plugin     = false,
@@ -38,7 +38,7 @@ class munin::node (
             cwd         => '/tmp/openstack-munin',
             command     => 'git pull origin master && cp * /usr/share/munin/plugins',
             require     => Exec['download_openstack_plugins'],
-            refresh       => true,
+            unless      => "test -f /usr/share/munin/plugins/nova_services",
          }
 
     if $nova-plugin == true {
