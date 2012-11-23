@@ -52,10 +52,6 @@ class munin::node (
         }
         
 
-        }
-               
-
-
-    }
 }
+
 
